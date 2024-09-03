@@ -7,3 +7,24 @@
       }
     }
   }
+
+  @each $screen-size, $size-map in $font-sizes {
+    @if $screen-size == small {
+      @each $size-name, $size-value in $size-map {
+        --fs-#{$size-name}: #{$size-value};
+      }
+    } @else {
+      @include mq($screen-size) {
+        @each $size-name, $size-value in $size-map {
+          --fs-#{$size-name}: #{$size-value};
+        }
+      }
+    }
+  }
+
+$font-size-400: var(--fs-400);
+$font-size-500: var(--fs-500);
+$font-size-600: var(--fs-600);
+$font-size-700: var(--fs-700);
+$font-size-800: var(--fs-800);
+$font-size-900: var(--fs-900);
